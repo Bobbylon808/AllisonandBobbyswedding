@@ -168,10 +168,7 @@ function handleSubmit(event) {
         }
     }).then(response => {
         if (response.ok) {
-        const container = document.querySelector('.container');
-        const canvas = document.getElementById('fireworksCanvas');
-        const fireworks = new Fireworks(canvas, { autoresize: true });
-        fireworks.start();
+            document.querySelector('.container').innerHTML = 
             document.querySelector('.container').innerHTML = `
             <canvas id="fireworksCanvas" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:999;"></canvas>
             <div class="countdown sparkle" id="countdown"></div>
@@ -183,8 +180,11 @@ function handleSubmit(event) {
             <p><a href="https://www.google.com/maps/dir/?api=1&destination=The+Platinum+Hotel,+Las+Vegas+NV" target="_blank" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #f4c2c2; color: black; text-decoration: none; border-radius: 8px;">🗺️ Get Directions</a></p>
             <div style="margin-top: 20px;">
                 <iframe src="https://www.google.com/maps?q=The+Platinum+Hotel+%26+Spa,+Las+Vegas&output=embed" width="100%" height="300" style="border:0; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.4);" allowfullscreen></iframe>
-            </div>
-        `;
+            </div>`;
+
+            const canvas = document.getElementById('fireworksCanvas');
+            const fireworks = new Fireworks(canvas, { autoresize: true });
+            fireworks.start();
     } else {
             alert("Oops! Something went wrong. Please try again.");
         }
