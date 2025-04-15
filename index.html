@@ -182,7 +182,7 @@ function handleSubmit(event) {
             </div>`;
 
             const canvas = document.getElementById('fireworksCanvas');
-            const fireworks = new window.Fireworks.default(canvas, {
+            const fireworks = new window.Fireworks(canvas, {
   autoresize: true,
   opacity: 0.5,
   intensity: 30
