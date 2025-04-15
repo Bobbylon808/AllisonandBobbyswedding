@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -182,8 +183,14 @@ function handleSubmit(event) {
             </div>`;
 
             const canvas = document.getElementById('fireworksCanvas');
-            const fireworks = new Fireworks(canvas, { autoresize: true });
-            fireworks.start();
+            const fireworks = new Fireworks({
+  target: canvas,
+  autoresize: true,
+  intensity: 30,
+  sound: { enabled: false },
+  opacity: 0.5
+});
+fireworks.start();
     } else {
             alert("Oops! Something went wrong. Please try again.");
         }
