@@ -182,17 +182,21 @@ function handleSubmit(event) {
                     <h2>A Note on Gifts...</h2>
                     <p>The presence of our friends and family is the greatest gift of all.</p>
                     <p>However, if it is your wish to bless us with a gift, we would greatly appreciate adding to our honeymoon fund.</p>
-                    <p>
-<p><strong>Prefer to use a credit or debit card?</strong><br>
-You can securely give to our honeymoon fund here:</p>
-<a href="https://buy.stripe.com/28o28m7Zt3gU1pu144" target="_blank" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#f4c2c2; color:black; border-radius:8px; text-decoration:none;">💳 Give with Credit/Debit Card</a>
-                       <strong>Zelle:</strong> allison@example.com</p>
+                    <p><strong>Zelle:</strong> allison@example.com</p>
+                    <p><strong>Prefer to use a credit or debit card?</strong><br>
+                    You can securely give to our honeymoon fund here:</p>
+                    <a href="https://buy.stripe.com/28o28m7Zt3gU1pu144" target="_blank" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#f4c2c2; color:black; border-radius:8px; text-decoration:none;">💳 Give with Credit/Debit Card</a>
+                    <br><br>
                     <button onclick="showThankYou()" style="margin-top: 20px; padding: 10px 20px; border: none; background: #f4c2c2; color: black; border-radius: 8px; cursor: pointer;">Continue</button>
                 </div>
             `;
-            return;
+        } else {
+            alert("Oops! Something went wrong. Please try again.");
         }
-
+    });
+}
+</script>
+<script>
 function showThankYou() {
   const container = document.querySelector('.container');
   container.innerHTML = `
@@ -228,21 +232,7 @@ function showThankYou() {
     }));
   }, 250);
 }
-
-  const particleCount = 50 * (timeLeft / duration);
-
-  confetti(Object.assign({}, defaults, {
-    particleCount,
-    origin: { x: Math.random(), y: Math.random() * 0.5 }
-  }));
-}, 250);
-    } else {
-            alert("Oops! Something went wrong. Please try again.");
-        }
-    });
-}
 </script>
-
 <script>
   const heartColors = ['#FFD700', '#FFFFFF', '#FF69B4'];
   setInterval(() => {
