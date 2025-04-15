@@ -70,7 +70,7 @@
     50% { text-shadow: 0 0 20px #ffffff, 0 0 30px #ffffff; }
 }
 </style>
-<script src="https://unpkg.com/fireworks-js@2.1.1/dist/fireworks.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
@@ -181,13 +181,11 @@ function handleSubmit(event) {
                 <iframe src="https://www.google.com/maps?q=The+Platinum+Hotel+%26+Spa,+Las+Vegas&output=embed" width="100%" height="300" style="border:0; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.4);" allowfullscreen></iframe>
             </div>`;
 
-            const canvas = document.getElementById('fireworksCanvas');
-            const fireworks = new window.Fireworks(canvas, {
-  autoresize: true,
-  opacity: 0.5,
-  intensity: 30
+            confetti({
+    particleCount: 150,
+    spread: 80,
+    origin: { y: 0.6 }
 });
-fireworks.start();
     } else {
             alert("Oops! Something went wrong. Please try again.");
         }
