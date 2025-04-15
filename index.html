@@ -60,7 +60,16 @@
             margin-top: 20px;
             color: #ff69b4;
         }
-    </style>
+    .sparkle {
+    position: relative;
+    display: inline-block;
+    animation: sparkle 2s infinite;
+}
+@keyframes sparkle {
+    0%, 100% { text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4; }
+    50% { text-shadow: 0 0 20px #ffffff, 0 0 30px #ffffff; }
+}
+</style>
 </head>
 <body>
 
@@ -72,7 +81,8 @@
 </div>
 
 <div class="container">
-    <h1>Bobby & Allison's Wedding</h1>
+    <h1 style="font-size: 3em;">Bobby & Allison's Wedding</h1>
+    <div class="countdown sparkle" id="countdown"></div>
     <p>Join us for our special day in Las Vegas!<br>
 Buffet!<br>
 Open-bar!<br>
@@ -88,8 +98,6 @@ On the ROOF TOP of the Platinum!</p>
 <p>If you want to stay on the Top Floor or in the hotel with us and book a room with our Discounted rate please let us know in the comment box below and we can send you the link!</p>
 <p>OR If you need help to plan your stay at any other location close to here, check out the map below!</p>
 <p>See you soon!</p>
-
-    <div class="countdown" id="countdown"></div>
 
     <h2>RSVP by May 30th</h2>
 
@@ -138,9 +146,11 @@ On the ROOF TOP of the Platinum!</p>
         + minutes + "m " + seconds + "s ";
 
         if (distance < 0) {
-            clearInterval(timer);
-            document.getElementById("countdown").innerHTML = "It's our wedding day!";
-        }
+        clearInterval(timer);
+        document.querySelectorAll("#countdown").forEach(el => {
+            el.innerHTML = "It's our wedding day!";
+        });
+    }
     }, 1000);
 
 
@@ -158,9 +168,15 @@ function handleSubmit(event) {
     }).then(response => {
         if (response.ok) {
             document.querySelector('.container').innerHTML = `
+                <div class="countdown sparkle" id="countdown"></div>
                 <h1 style="color: #ff69b4;">Thank you for your RSVP!</h1>
                 <p>We can't wait to celebrate with you on October 11th, 2025 🎉</p>
                 <p>Feel free to reach out if you need help with accommodations or anything else!</p>
+                <p><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Bobby+%26+Allison's+Wedding&dates=20251011T013000Z/20251011T070000Z&details=Join+us+on+the+rooftop+of+the+Platinum+Hotel+in+Las+Vegas!+Buffet,+open-bar,+dessert,+and+celebration+await!&location=The+Platinum+Hotel,+Las+Vegas+NV&sf=true&output=xml" target="_blank" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #f4c2c2; color: black; text-decoration: none; border-radius: 8px;">➕ Save to Google Calendar</a></p>
+                <p><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:Bobby%20%26%20Allison's%20Wedding%0ADTSTART:20251011T013000Z%0ADTEND:20251011T070000Z%0ADESCRIPTION:Join%20us%20on%20the%20rooftop%20of%20the%20Platinum%20Hotel%20in%20Las%20Vegas!%20Buffet,%20open-bar,%20dessert,%20and%20celebration%20await!%0ALOCATION:The%20Platinum%20Hotel,%20Las%20Vegas%20NV%0AEND:VEVENT%0AEND:VCALENDAR" download="Bobby_and_Allison_Wedding.ics" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #f4c2c2; color: black; text-decoration: none; border-radius: 8px;">➕ Save to Apple/Outlook Calendar</a></p>
+                $1
+<p><a href="https://www.google.com/maps/dir/?api=1&destination=The+Platinum+Hotel,+Las+Vegas+NV" target="_blank" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #f4c2c2; color: black; text-decoration: none; border-radius: 8px;">🗺️ Get Directions</a></p>
+                </div>
             `;
         } else {
             alert("Oops! Something went wrong. Please try again.");
@@ -171,5 +187,3 @@ function handleSubmit(event) {
 
 </body>
 </html>
-
-    
