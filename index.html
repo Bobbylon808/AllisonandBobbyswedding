@@ -81,6 +81,16 @@
   0%, 100% { opacity: 1; }
   50% { opacity: 0.2; }
 }
+.rsvp-animated {
+  font-weight: bold;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
@@ -108,11 +118,11 @@ On the ROOF TOP of the Platinum!</p>
 <strong>Time:</strong> 6:30PM Till 11:30/12 <br>
 <strong>Venue:</strong> Platinum Hotel, Las Vegas Strip, Elevator to the Roof Top! Free parking</p>
 
-<p>If you want to stay on the Top Floor or in the hotel with us and book a room with our Discounted rate please let us know in the comment box below and we can send you the link!</p>
-<p>OR If you need help to plan your stay at any other location close to here, check out the map below!</p>
+<p>If you need staying accommodations or if you would like to book a room at the platinum with our Discounted rate, please let us know in the comment box below and we can send you the link!</p>
+<p>Check out the location below on the map!</p>
 <p>See you soon!</p>
 
-    <h2>RSVP by May 30th</h2>
+    <h2 class="rsvp-animated">RSVP by May 30th</h2>
 
     <form action="https://formspree.io/f/mzzewolg" method="POST" onsubmit="handleSubmit(event)">
         <input type="text" name="name" placeholder="Your Name" required>
