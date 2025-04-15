@@ -70,7 +70,10 @@
     50% { text-shadow: 0 0 20px #ffffff, 0 0 30px #ffffff; }
 }
 @keyframes shimmer {
-  0% { filter: brightness(1); }
+  0%   { filter: drop-shadow(0 0 3px #fff); }
+  50%  { filter: drop-shadow(0 0 10px #ff69b4); }
+  100% { filter: drop-shadow(0 0 3px #fff); }
+}
   50% { filter: brightness(1.8); }
   100% { filter: brightness(1); }
 }
@@ -173,7 +176,25 @@ function handleSubmit(event) {
         }
     }).then(response => {
         if (response.ok) {
-            document.querySelector('.container').innerHTML = `
+            const container = document.querySelector('.container');
+            container.innerHTML = `
+                <div class="gift-popup" style="background-color: rgba(255,255,255,0.95); color: #333; padding: 30px; border-radius: 10px; text-align: center;">
+                    <h2>A Note on Gifts...</h2>
+                    <p>The presence of our friends and family is the greatest gift of all.</p>
+                    <p>However, if it is your wish to bless us with a gift, we would greatly appreciate adding to our honeymoon fund.</p>
+                    <p><strong>Zelle:</strong> allison@example.com</p>
+<p><strong>Prefer to use a credit or debit card?</strong><br>
+You can securely give to our honeymoon fund here:</p>
+<a href="https://buy.stripe.com/28o28m7Zt3gU1pu144" target="_blank" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#f4c2c2; color:black; border-radius:8px; text-decoration:none;">💳 Give with Credit/Debit Card</a>
+                       <strong>Zelle:</strong> allison@example.com</p>
+                    <button onclick="showThankYou()" style="margin-top: 20px; padding: 10px 20px; border: none; background: #f4c2c2; color: black; border-radius: 8px; cursor: pointer;">Continue</button>
+                </div>
+            `;
+            return;
+        }
+
+function showThankYou() {
+  const container = document.querySelector('.container'); `
             <canvas id=\"fireworksCanvas\" style=\"position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:999; \"></canvas>
             <div class="countdown sparkle" id="countdown"></div>
             <h1 style="color: #ff69b4;">Thank you for your RSVP!</h1>
@@ -239,7 +260,10 @@ const interval = setInterval(function() {
 
 <style>
 @keyframes floatUp {
-  0% { transform: translateY(0); opacity: 1; }
+  0%   { transform: translateY(0) translateX(0); opacity: 1; }
+  50%  { transform: translateY(-60vh) translateX(15px); }
+  100% { transform: translateY(-120vh) translateX(-15px); opacity: 0; }
+}
   100% { transform: translateY(-120vh); opacity: 0; }
 }
 </style>
