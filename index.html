@@ -55,6 +55,10 @@
         button:hover {
             background-color: #e3a5a5;
         }
+        .countdown {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -71,6 +75,8 @@
     <p>Join us for our special day in Las Vegas!</p>
     <p><strong>Date:</strong> October 11, 2025<br>
     <strong>Venue:</strong> Platinum Hotel, Las Vegas Strip</p>
+
+    <div class="countdown" id="countdown"></div>
 
     <h2>RSVP by May 30th</h2>
 
@@ -98,7 +104,27 @@
     </form>
 </div>
 
+<script>
+    const countdownDate = new Date("October 11, 2025 00:00:00").getTime();
+
+    const timer = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+        if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById("countdown").innerHTML = "It's our wedding day!";
+        }
+    }, 1000);
+</script>
+
 </body>
 </html>
-
-
