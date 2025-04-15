@@ -69,6 +69,11 @@
     0%, 100% { text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4; }
     50% { text-shadow: 0 0 20px #ffffff, 0 0 30px #ffffff; }
 }
+@keyframes shimmer {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.8); }
+  100% { filter: brightness(1); }
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
@@ -169,7 +174,7 @@ function handleSubmit(event) {
     }).then(response => {
         if (response.ok) {
             document.querySelector('.container').innerHTML = `
-            <canvas id=\"fireworksCanvas\" style=\"position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:999; background: rgba(0, 0, 0, 0.6);\"></canvas>
+            <canvas id=\"fireworksCanvas\" style=\"position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:999; \"></canvas>
             <div class="countdown sparkle" id="countdown"></div>
             <h1 style="color: #ff69b4;">Thank you for your RSVP!</h1>
             <p>We can't wait to celebrate with you on October 11th, 2025 🎉</p>
@@ -181,11 +186,30 @@ function handleSubmit(event) {
                 <iframe src="https://www.google.com/maps?q=The+Platinum+Hotel+%26+Spa,+Las+Vegas&output=embed" width="100%" height="300" style="border:0; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.4);" allowfullscreen></iframe>
             </div>`;
 
-            confetti({
-    particleCount: 150,
-    spread: 80,
-    origin: { y: 0.6 }
-});
+            const duration = 30000;
+const animationEnd = Date.now() + duration;
+const defaults = {
+  startVelocity: 30,
+  spread: 360,
+  ticks: 60,
+  zIndex: 999,
+  colors: ['#FFD700', '#FFFFFF', '#FF69B4']
+};
+
+const interval = setInterval(function() {
+  const timeLeft = animationEnd - Date.now();
+
+  if (timeLeft <= 0) {
+    return clearInterval(interval);
+  }
+
+  const particleCount = 50 * (timeLeft / duration);
+
+  confetti(Object.assign({}, defaults, {
+    particleCount,
+    origin: { x: Math.random(), y: Math.random() * 0.5 }
+  }));
+}, 250);
     } else {
             alert("Oops! Something went wrong. Please try again.");
         }
@@ -193,5 +217,31 @@ function handleSubmit(event) {
 }
 </script>
 
+<script>
+  const heartColors = ['#FFD700', '#FFFFFF', '#FF69B4'];
+  setInterval(() => {
+    const heart = document.createElement('div');
+    heart.textContent = '❤';
+    heart.style.position = 'fixed';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.top = '100%';
+    heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+    heart.style.color = heartColors[Math.floor(Math.random() * heartColors.length)];
+    heart.style.opacity = 0.8;
+    heart.style.zIndex = 998;
+    heart.style.pointerEvents = 'none';
+    heart.style.animation = 'floatUp 6s linear forwards, shimmer 2s infinite';
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+  }, 300);
+</script>
+
+<style>
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-120vh); opacity: 0; }
+}
+</style>
 </body>
 </html>
