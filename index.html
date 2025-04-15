@@ -182,7 +182,7 @@ function handleSubmit(event) {
                     <h2>A Note on Gifts...</h2>
                     <p>The presence of our friends and family is the greatest gift of all.</p>
                     <p>However, if it is your wish to bless us with a gift, we would greatly appreciate adding to our honeymoon fund.</p>
-                    <p><strong>Zelle:</strong> allison@example.com</p>
+                    <p>
 <p><strong>Prefer to use a credit or debit card?</strong><br>
 You can securely give to our honeymoon fund here:</p>
 <a href="https://buy.stripe.com/28o28m7Zt3gU1pu144" target="_blank" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#f4c2c2; color:black; border-radius:8px; text-decoration:none;">💳 Give with Credit/Debit Card</a>
@@ -194,35 +194,40 @@ You can securely give to our honeymoon fund here:</p>
         }
 
 function showThankYou() {
-  const container = document.querySelector('.container'); `
-            <canvas id=\"fireworksCanvas\" style=\"position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:999; \"></canvas>
-            <div class="countdown sparkle" id="countdown"></div>
-            <h1 style="color: #ff69b4;">Thank you for your RSVP!</h1>
-            <p>We can't wait to celebrate with you on October 11th, 2025 🎉</p>
-            <p>Feel free to reach out if you need help with accommodations or anything else!</p>
-            <p><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Bobby+%26+Allison's+Wedding&dates=20251011T013000Z/20251011T070000Z&details=Join+us+on+the+rooftop+of+the+Platinum+Hotel+in+Las+Vegas!+Buffet,+open-bar,+dessert,+and+celebration+await!&location=The+Platinum+Hotel,+Las+Vegas+NV&sf=true&output=xml" target="_blank" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #f4c2c2; color: black; text-decoration: none; border-radius: 8px;">➕ Save to Google Calendar</a></p>
-            <p><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:Bobby%20%26%20Allison's%20Wedding%0ADTSTART:20251011T013000Z%0ADTEND:20251011T070000Z%0ADESCRIPTION:Join%20us%20on%20the%20rooftop%20of%20the%20Platinum%20Hotel%20in%20Las%20Vegas!%20Buffet,%20open-bar,%20dessert,%20and%20celebration%20await!%0ALOCATION:The%20Platinum%20Hotel,%20Las%20Vegas%20NV%0AEND:VEVENT%0AEND:VCALENDAR" download="Bobby_and_Allison_Wedding.ics" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #f4c2c2; color: black; text-decoration: none; border-radius: 8px;">➕ Save to Apple/Outlook Calendar</a></p>
-            <p><a href="https://www.google.com/maps/dir/?api=1&destination=The+Platinum+Hotel,+Las+Vegas+NV" target="_blank" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #f4c2c2; color: black; text-decoration: none; border-radius: 8px;">🗺️ Get Directions</a></p>
-            <div style="margin-top: 20px;">
-                <iframe src="https://www.google.com/maps?q=The+Platinum+Hotel+%26+Spa,+Las+Vegas&output=embed" width="100%" height="300" style="border:0; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.4);" allowfullscreen></iframe>
-            </div>`;
+  const container = document.querySelector('.container');
+  container.innerHTML = `
+    <canvas id="fireworksCanvas" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:999;"></canvas>
+    <div class="countdown sparkle" id="countdown"></div>
+    <h1 style="color: #ff69b4;">Thank you for your RSVP!</h1>
+    <p>We can't wait to celebrate with you on October 11th, 2025 🎉</p>
+    <p>Feel free to reach out if you need help with accommodations or anything else!</p>
+    <p><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Bobby+%26+Allison's+Wedding&dates=20251011T013000Z/20251011T070000Z&details=Join+us+on+the+rooftop+of+the+Platinum+Hotel+in+Las+Vegas!+Buffet,+open-bar,+dessert,+and+celebration+await!&location=The+Platinum+Hotel,+Las+Vegas+NV&sf=true&output=xml" target="_blank" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #f4c2c2; color: black; text-decoration: none; border-radius: 8px;">➕ Save to Google Calendar</a></p>
+    <p><a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:Bobby%20%26%20Allison's%20Wedding%0ADTSTART:20251011T013000Z%0ADTEND:20251011T070000Z%0ADESCRIPTION:Join%20us%20on%20the%20rooftop%20of%20the%20Platinum%20Hotel%20in%20Las%20Vegas!%20Buffet,%20open-bar,%20dessert,%20and%20celebration%20await!%0ALOCATION:The%20Platinum%20Hotel,%20Las%20Vegas%20NV%0AEND:VEVENT%0AEND:VCALENDAR" download="Bobby_and_Allison_Wedding.ics" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #f4c2c2; color: black; text-decoration: none; border-radius: 8px;">➕ Save to Apple/Outlook Calendar</a></p>
+    <p><a href="https://www.google.com/maps/dir/?api=1&destination=The+Platinum+Hotel,+Las+Vegas+NV" target="_blank" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #f4c2c2; color: black; text-decoration: none; border-radius: 8px;">🗺️ Get Directions</a></p>
+    <div style="margin-top: 20px;">
+      <iframe src="https://www.google.com/maps?q=The+Platinum+Hotel+%26+Spa,+Las+Vegas&output=embed" width="100%" height="300" style="border:0; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.4);" allowfullscreen></iframe>
+    </div>`;
 
-            const duration = 30000;
-const animationEnd = Date.now() + duration;
-const defaults = {
-  startVelocity: 30,
-  spread: 360,
-  ticks: 60,
-  zIndex: 999,
-  colors: ['#FFD700', '#FFFFFF', '#FF69B4']
-};
+  const duration = 30000;
+  const animationEnd = Date.now() + duration;
+  const defaults = {
+    startVelocity: 30,
+    spread: 360,
+    ticks: 60,
+    zIndex: 999,
+    colors: ['#FFD700', '#FFFFFF', '#FF69B4']
+  };
 
-const interval = setInterval(function() {
-  const timeLeft = animationEnd - Date.now();
-
-  if (timeLeft <= 0) {
-    return clearInterval(interval);
-  }
+  const interval = setInterval(function () {
+    const timeLeft = animationEnd - Date.now();
+    if (timeLeft <= 0) return clearInterval(interval);
+    const particleCount = 50 * (timeLeft / duration);
+    confetti(Object.assign({}, defaults, {
+      particleCount,
+      origin: { x: Math.random(), y: Math.random() * 0.5 }
+    }));
+  }, 250);
+}
 
   const particleCount = 50 * (timeLeft / duration);
 
@@ -264,7 +269,6 @@ const interval = setInterval(function() {
   50%  { transform: translateY(-60vh) translateX(15px); }
   100% { transform: translateY(-120vh) translateX(-15px); opacity: 0; }
 }
-  100% { transform: translateY(-120vh); opacity: 0; }
 }
 </style>
 </body>
